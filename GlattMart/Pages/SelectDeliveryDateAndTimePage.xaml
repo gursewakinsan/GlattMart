@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    x:Class="GlattMart.Pages.SelectDeliveryDateAndTimePage" BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label 
+                Text="Calendar functionality coming soon." 
+                TextColor="Red" HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"/>
+
+             <StackLayout
+                VerticalOptions="EndAndExpand"
+                HeightRequest="50"
+                BackgroundColor="#084190"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="2">
+                <Label
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    TextColor="White"
+                    Text="Continue"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnContinueTapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+                <!--<StackLayout>
+          <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
+             <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+             <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Jan 1 2000</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MinimumDate>
+             <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                   <x:Arguments>
+                      <x:String>Dec 31 2050</x:String>
+                   </x:Arguments>
+                </sys:DateTime>
+             </DatePicker.MaximumDate>
+          </DatePicker>
+       </StackLayout>-->
+    </ContentPage.Content>
+</ContentPage>

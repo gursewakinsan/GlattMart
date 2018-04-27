@@ -1,0 +1,6 @@
+/Users/apple/Documents/Development/GlattMart/packages/Xamarin.Forms.2.5.0.121934/lib/MonoAndroid10/FormsViewGroup.dll
+/Users/apple/Documents/Development/GlattMart/packages/Xam.Plugins.Settings.3.1.1/lib/MonoAndroid10/Plugin.Settings.Abstractions.dll
+/Users/apple/Documents/Development/GlattMart/packages/Xam.Plugins.Settings.3.1.1/lib/MonoAndroid10/Plugin.Settings.dll
+/Users/apple/Documents/Development/GlattMart/packages/Xamarin.Forms.2.5.0.121934/lib/MonoAndroid10/Xamarin.Forms.Core.dll
+/Users/apple/Documents/Development/GlattMart/packages/Xamarin.Forms.2.5.0.121934/lib/MonoAndroid10/Xamarin.Forms.Platform.Android.dll
+/Users/apple/Documents/Development/GlattMart/packages/Xamarin.Forms.2.5.0.121934/lib/MonoAndroid10/Xamarin.Forms.Xaml.dll

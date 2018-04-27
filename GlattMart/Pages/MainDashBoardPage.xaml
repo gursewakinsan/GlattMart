@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+    BackgroundColor="White" xmlns:local="clr-namespace:GlattMart;assembly=GlattMart" 
+    xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" 
+    x:Class="GlattMart.Pages.MainDashBoardPage">
+
+    <navigationdrawer:SfNavigationDrawer 
+        x:Name="navigationDrawer" 
+        DrawerWidth="250" 
+        DrawerHeaderHeight="250" 
+        DrawerFooterHeight="0">
+        
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            <Grid 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="StartAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="60*" />
+                </Grid.RowDefinitions>
+                
+                <AbsoluteLayout 
+                    Grid.Row="0" 
+                    BackgroundColor="Black" 
+                    Padding="0,0,0,0">
+                    
+                    <Image 
+                        Aspect="AspectFill" 
+                        AbsoluteLayout.LayoutBounds="1,1,1,1" 
+                        AbsoluteLayout.LayoutFlags="All" 
+                        Source="background_image" 
+                        BackgroundColor="Gray" />
+                    
+                    <Image 
+                        Source="menu" 
+                        Aspect="AspectFit" 
+                        AbsoluteLayout.LayoutBounds="0,0.1,0.1,25" 
+                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="hamburgerButton_Clicked" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
+                    <Image 
+                        Source="logo-2" 
+                        Aspect="AspectFit" 
+                        HeightRequest="200" 
+                        WidthRequest="200" 
+                        AbsoluteLayout.LayoutBounds="0.5,0.1,200,200" 
+                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    </Image>
+                    <!--<local:Badge  Text="3" WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"/>-->
+                    <StackLayout 
+                        Padding="5" 
+                        AbsoluteLayout.LayoutBounds=".98,0.05,50,50" 
+                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                        
+                        <Button 
+                            BorderRadius="13" 
+                            IsVisible="true" 
+                            WidthRequest="25" 
+                            Text="" 
+                            HeightRequest="25" 
+                            BackgroundColor="Transparent" 
+                            TextColor="White" />
+                        
+                        <Image 
+                            Source="cartIcon" 
+                            HeightRequest="20" 
+                            WidthRequest="20" 
+                            Margin="-20,-5,0,0" 
+                            Aspect="AspectFit" />
+                        
+                    </StackLayout>
+                    <StackLayout 
+                        HorizontalOptions="FillAndExpand" 
+                        Padding="10,10,10,0"
+                        AbsoluteLayout.LayoutBounds="0,1,1,120" 
+                        AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry 
+                                x:Name="searchEntry"
+                                Placeholder="Search Item No. / Keyword" 
+                                PlaceholderColor="Black" 
+                                HorizontalTextAlignment="Center" 
+                                HorizontalOptions="FillAndExpand" 
+                                TextChanged="searchEntry_TextChanged" />
+                            
+                            <Image 
+                                Aspect="AspectFill" 
+                                Source="barcode_scan">
+                                 <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                            Tapped="OnButtonBarCodeClicked"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </AbsoluteLayout>
+
+                <ScrollView Grid.Row="1">
+                    <StackLayout 
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand">
+                    
+                        <syncfusion:SfListView 
+                            BackgroundColor="White" 
+                            x:Name="listViewDashboard" 
+                            ItemsSource="{Binding SubCategoryData}"
+                            SelectedItem="{Binding OnSelectedCategoryData}" 
+                            AutoFitMode="Height" IsScrollBarVisible="false">
+
+                            <syncfusion:SfListView.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackLayout IsVisible="{Binding IsVisibleCategoriesHeader}" BackgroundColor="Silver" HeightRequest="30">
+                                        <Label 
+                                            Text="Categories"
+                                            TextColor="Black"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="CenterAndExpand"
+                                            FontSize="17"
+                                            FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </syncfusion:SfListView.HeaderTemplate>
+                        </syncfusion:SfListView>
+
+                    <!--==============================================-->
+                        <syncfusion:SfListView 
+                            x:Name="listviewProducts" 
+                            ItemsSource="{Binding ProductList}" 
+                            SelectedItem="{Binding OnSelectedProductData}"
+                            AutoFitMode="Height"
+                            IsVisible="{Binding IsSearch}"
+                            ItemTapped="listViewCategories_ItemTapped">
+                            
+                            <syncfusion:SfListView.LayoutManager>
+                                <syncfusion:GridLayout>
+                                    <syncfusion:GridLayout.SpanCount>
+                                        <OnPlatform x:TypeArguments="x:Int32">
+                                            <OnPlatform.WinPhone>
+                                                
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Int32" 
+                                                    Phone="2" 
+                                                    Tablet="4" 
+                                                    Desktop="4" />
+                                            </OnPlatform.WinPhone>
+                                            
+                                            <OnPlatform.Android>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Int32" 
+                                                    Phone="2" 
+                                                    Tablet="4" />
+                                            </OnPlatform.Android>
+                                            
+                                            <OnPlatform.iOS>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Int32" 
+                                                    Phone="2" 
+                                                    Tablet="4" />
+                                            </OnPlatform.iOS>
+                                            
+                                        </OnPlatform>
+                                    </syncfusion:GridLayout.SpanCount>
+                                </syncfusion:GridLayout>
+                            </syncfusion:SfListView.LayoutManager>
+
+                            <syncfusion:SfListView.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackLayout BackgroundColor="Silver" HeightRequest="30">
+                                        <Label 
+                                            Text="Products"
+                                            TextColor="Black"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="CenterAndExpand"
+                                            FontSize="17"
+                                            FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </syncfusion:SfListView.HeaderTemplate>
+
+                            <syncfusion:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout 
+                                                HorizontalOptions="FillAndExpand" 
+                                                VerticalOptions="FillAndExpand"
+                                                BackgroundColor="White" 
+                                                Margin="10" Spacing="10"
+                                                Padding="10">
+
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                        <RowDefinition Height="30"/>
+                                                    </Grid.RowDefinitions>
+                                                
+                                                
+                                                    <Frame 
+                                                        BackgroundColor="Transparent" 
+                                                        HasShadow="false" 
+                                                        OutlineColor="Silver" 
+                                                        CornerRadius="0" Grid.Row="0">
+                                                        
+                                                        <ffimageloading:CachedImage 
+                                                            Grid.Column="0" 
+                                                            x:Name="Image" 
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="Center"
+                                                            LoadingPlaceholder="productPlaceholder.png" 
+                                                            Source="{Binding thumbnail}" 
+                                                            ErrorPlaceholder="productPlaceholder.png"
+                                                            DownsampleToViewSize="true" 
+                                                            WidthRequest="150" 
+                                                            HeightRequest="150"
+                                                            Aspect="Fill">
+                                                        </ffimageloading:CachedImage>
+                                                    </Frame>
+                                                    
+                                                    <Label 
+                                                        Text="{Binding name}" 
+                                                        TextColor="#393939"
+                                                        FontSize="14" 
+                                                        Margin="0,2,0,0" Grid.Row="1" />
+                                                    
+                                                    <Label 
+                                                        Text="{Binding DisplayPriceWithUnit}" 
+                                                        TextColor="#393939" 
+                                                        FontSize="14" 
+                                                        Margin="0,2,0,0" Grid.Row="2" />
+                                                    
+                                                    <numeric:SfNumericUpDown 
+                                                        x:Name="numericUpDown" 
+                                                        Value="{Binding QTY}" 
+                                                        Minimum="1" 
+                                                        HeightRequest="30" 
+                                                        WidthRequest="100" 
+                                                        ParsingMode="Decimal" 
+                                                        HorizontalOptions="Start" 
+                                                        FormatString="N" 
+                                                        SpinButtonAlignment="Both" 
+                                                        MaximumDecimalDigits="0"
+                                                        ClassId="{Binding id}" Grid.Row="3" />
+
+                                                  </Grid>  
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </syncfusion:SfListView.ItemTemplate>
+                        </syncfusion:SfListView>
+                    </StackLayout>
+                </ScrollView>    
+                <!--==============================================-->
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+        
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <local:Gradient_Stack 
+                StartColor="#0f2a7c" 
+                EndColor="#3b56a3" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                
+                <StackLayout Orientation="Vertical">
+                    <StackLayout 
+                        HeightRequest="90"
+                        Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                        
+                        <Image 
+                            Source="placeholder_icon.png" 
+                            HeightRequest="80"
+                            Aspect="AspectFit" 
+                            VerticalOptions="CenterAndExpand" 
+                            Margin="8" />
+                        
+                        <StackLayout
+                            x:Name="LoggedInView" 
+                            VerticalOptions="CenterAndExpand" 
+                            Margin="0,0,5,0">
+                            
+                            <Label 
+                                x:Name="FullNameLabel" 
+                                TextColor="White" 
+                                FontSize="Small" />
+                            
+                            <Label 
+                                x:Name="EmailLabel" 
+                                TextColor="White" 
+                                FontSize="Micro" />
+                        </StackLayout>
+                        
+                        <Label 
+                            x:Name="NotLoggedInView" 
+                            TextColor="White" 
+                            Text="You are not Logged In"
+                            FontSize="Micro" 
+                            VerticalOptions="CenterAndExpand" 
+                            VerticalTextAlignment="Center"/>
+                        
+                    </StackLayout>
+                    
+                    <BoxView 
+                        HorizontalOptions="FillAndExpand" 
+                        HeightRequest="1" 
+                        BackgroundColor="White" />
+                    
+                    <Grid Margin="0,10,0,0" RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image 
+                            Grid.Column="0"
+                            Grid.Row="0" 
+                            Source="profile_icon.png" 
+                            Aspect="AspectFit" 
+                            HeightRequest="30"/>
+                        
+                        <Image 
+                            Grid.Column="0" 
+                            Grid.Row="1" 
+                            Source="star_icon.png" 
+                            Aspect="AspectFit" 
+                            HeightRequest="30"/>
+                        
+                        <Image 
+                            Grid.Column="0"
+                            Grid.Row="2" 
+                            Source="list_icon.png"
+                            Aspect="AspectFit" 
+                            HeightRequest="30"/>
+                        
+                        <Label 
+                            Grid.Column="1"
+                            Grid.Row="0" 
+                            Text="Profile" 
+                            TextColor="White"
+                            FontSize="Small" 
+                            VerticalOptions="CenterAndExpand">
+                             <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnClickedProfile" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        
+                        <Label 
+                            Grid.Column="1" 
+                            Grid.Row="1" 
+                            Text="Specials" 
+                            TextColor="White"
+                            FontSize="Small" 
+                            VerticalOptions="CenterAndExpand" />
+                        
+                        <Label 
+                            Grid.Column="1"
+                            Grid.Row="2" 
+                            Text="Shopping List" 
+                            TextColor="White" 
+                            FontSize="Small" 
+                            VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnClickedShoppingList" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                       </Grid>
+                </StackLayout>
+            </local:Gradient_Stack>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+        
+        <navigationdrawer:SfNavigationDrawer.DrawerContentView>
+            <local:Gradient_Stack 
+                StartColor="#0f2a7c" 
+                EndColor="#3b56a3"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                <StackLayout Margin="0,20,0,0">
+                    <BoxView 
+                        HorizontalOptions="FillAndExpand" 
+                        HeightRequest="1" 
+                        BackgroundColor="White" />
+                    <Grid Margin="0,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image 
+                            Grid.Column="0" 
+                            Grid.Row="0" 
+                            Source="logout_icon.png"
+                            Aspect="AspectFit" 
+                            HeightRequest="30"/>
+                       
+                        <Label 
+                            x:Name="LoginLabel" 
+                            Grid.Column="1" 
+                            Grid.Row="0" 
+                            TextColor="White" 
+                            FontSize="Small"
+                            VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="logout_Clicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </local:Gradient_Stack>
+        </navigationdrawer:SfNavigationDrawer.DrawerContentView>
+    </navigationdrawer:SfNavigationDrawer>
+</ContentPage>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GlattMart.Pages.PaymentMethodPage"
+    xmlns:local="clr-namespace:GlattMart;assembly=GlattMart" 
+    Title="Payment" BackgroundColor="White">
+    
+    <StackLayout HorizontalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout>
+
+                <StackLayout
+                    BackgroundColor="#eeeeee"
+                    HeightRequest="56">
+                    <Label 
+                        TextColor="Black"
+                        Margin="20,0,0,0"
+                        FontAttributes="Bold"
+                        Text="SELECT PAYMENT METHOD"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <StackLayout HeightRequest="56">
+                    <StackLayout
+                        Spacing="10"
+                        Orientation="Horizontal"
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                            Source="iconCircleOutline.png"
+                            Aspect="AspectFit"
+                            Margin="20,0,0,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"/>
+
+                        <Label
+                            FontSize="15" 
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Text="Visa"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HeightRequest="56">
+                    <StackLayout
+                        Spacing="10"
+                        Orientation="Horizontal"
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                            Source="iconCircle.png"
+                            Aspect="AspectFit"
+                            Margin="20,0,0,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"/>
+
+                        <Label
+                            FontSize="15" 
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Text="Credit Card"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HeightRequest="56">
+                    <StackLayout
+                        Spacing="10"
+                        Orientation="Horizontal"
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                            Source="iconCircleOutline.png"
+                            Aspect="AspectFit"
+                            Margin="20,0,0,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"/>
+
+                        <Label
+                            FontSize="15" 
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Text="Amex"/>
+                    </StackLayout>
+                </StackLayout>
+
+               <StackLayout
+                    BackgroundColor="Silver"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="1"/>
+                
+                 <Grid Padding="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="57"/>
+                        <RowDefinition Height="57"/>
+                        <RowDefinition Height="57"/>
+                    </Grid.RowDefinitions> 
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Spacing="0" Grid.Row="0" Grid.Column="0">
+                        <local:CustomEntry
+                            Placeholder="First Name"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            TextColor="Black" 
+                            Text="{Binding FirstName}" />
+
+                        <StackLayout
+                            BackgroundColor="Silver"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="1"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="0" Grid.Row="0" Grid.Column="2">
+                        <local:CustomEntry
+                            Placeholder="Last Name"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            TextColor="Black" 
+                            Text="{Binding LastName}"/>
+
+                        <StackLayout
+                            BackgroundColor="Silver"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="1"/>
+                    </StackLayout>
+                    
+                    <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                        <local:CustomEntry
+                            Placeholder="Card No"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            TextColor="Black" 
+                            Keyboard="Numeric"
+                            TextChanged="OnCardNoTextChanged"
+                            Text="{Binding CardNumber}"/>
+
+                        <StackLayout
+                            BackgroundColor="Silver"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="1"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
+                        <local:CustomEntry
+                            Placeholder="CVV"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            TextColor="Black" 
+                            Keyboard="Numeric"
+                            TextChanged="OnCvvTextChanged" 
+                            Text="{Binding CvvNo}"/>
+
+                        <StackLayout
+                            BackgroundColor="Silver"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="1"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="0" Grid.Row="2" Grid.Column="2">
+                        <local:CustomEntry
+                            Placeholder="MM/YY"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            TextColor="Black" 
+                            Keyboard="Numeric"
+                            TextChanged="OnMMYYTextChanged" 
+                            Text="{Binding MothAndYear}"/>
+
+                        <StackLayout
+                            BackgroundColor="Silver"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="1"/>
+                    </StackLayout>
+                    
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout
+            VerticalOptions="EndAndExpand"
+            HeightRequest="50"
+            BackgroundColor="#084190"
+            HorizontalOptions="FillAndExpand"
+            Grid.Row="2">
+            <Label
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                TextColor="White"
+                Text="Submit Order"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PaymentSubmitOrderCommand}"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>      
+        
+    </StackLayout>
+</ContentPage>
+       

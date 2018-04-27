@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+    xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" 
+    x:Class="GlattMart.Pages.ShoppingListPage">
+    <ContentPage.Content>
+        <StackLayout 
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand">
+            
+            <syncfusion:SfListView 
+                BackgroundColor="White" 
+                Grid.Row="1" 
+                x:Name="listShopping" 
+                ItemsSource="{Binding ShoppingListProducts}" 
+                AutoFitMode="Height">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="0">
+                                <Grid 
+                                    BackgroundColor="White" 
+                                    Margin="0,0,0,1" 
+                                    Padding="10">
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="3*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Frame 
+                                        BackgroundColor="Transparent" 
+                                        HasShadow="false" 
+                                        OutlineColor="Silver" 
+                                        CornerRadius="0" 
+                                        Grid.Column="0" 
+                                        HeightRequest="100" 
+                                        WidthRequest="100">
+                                        
+                                        <Image 
+                                            Source="{Binding thumbnail}" 
+                                            HeightRequest="100" 
+                                            WidthRequest="100" />
+                                    </Frame>
+                                    <StackLayout 
+                                        Grid.Column="1" 
+                                        HorizontalOptions="Start">
+                                        
+                                        <Label 
+                                            Text="{Binding name}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="Center" 
+                                            TextColor="Black"
+                                            FontSize="14" />
+                                        
+                                        <Label 
+                                            Text="{Binding DisplayPrice}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="Center" 
+                                            TextColor="#c0c0c0" 
+                                            FontSize="13" />
+                                    </StackLayout>
+                                    
+                                    <StackLayout 
+                                        Grid.Column="2" 
+                                        VerticalOptions="FillAndExpand">
+                                        
+                                        <Image 
+                                            Source="cancel" 
+                                            Margin="0,0,5,0" 
+                                            HorizontalOptions="End" 
+                                            VerticalOptions="Start" 
+                                            ClassId="{Binding itemId}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Tapped="OnDeleteTapped" 
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label 
+                                            Text="{Binding DisplayPrice}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="End" 
+                                            TextColor="#393939" 
+                                            FontSize="14" 
+                                            FontAttributes="Bold" 
+                                            HorizontalTextAlignment="Center" 
+                                            VerticalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </Grid>
+                                <StackLayout
+                                    HeightRequest="1"
+                                    BackgroundColor="Silver"
+                                    VerticalOptions="StartAndExpand"
+                                    HorizontalOptions="FillAndExpand"/>
+                           </StackLayout>     
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

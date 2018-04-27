@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="GlattMart.Pages.ProfilePage" BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Name="ToolbarItemSave" 
+            Order="Primary" 
+            Text="Save" 
+            Priority="0" 
+            Command="{Binding SaveCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10">
+                <Image
+                    Margin="0,20,0,0"
+                    Source="placeholder_icon.png"
+                    Aspect="AspectFit"
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="Start"/>
+
+                <StackLayout 
+                    Padding="10" 
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="#F6F6F8">
+                    <Label 
+                        Text="GENERAL" 
+                        FontSize="15"
+                        TextColor="Black"
+                        
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start" />
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="Name" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry HeightRequest="50" Text="{Binding Name}" Placeholder="Name" TextColor="Black" Margin="10,0"></Entry>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+
+                    <Label Text="Email" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry HeightRequest="50" Text="{Binding Email}" Placeholder="Email" Keyboard="Email" TextColor="Black" Margin="10,0"></Entry>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" 
+                           HorizontalOptions="FillAndExpand" Margin="0,5,0,0"/>
+
+                    <Label HeightRequest="50" Text="Phone" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry Text="{Binding Phone}" Placeholder="Phone" Keyboard="Numeric" TextColor="Black" Margin="10,0"></Entry>
+                </StackLayout>
+                <StackLayout 
+                    Padding="10" 
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="#F6F6F8">
+                    <Label 
+                        Text="DELIVERY ADDRESS" 
+                        FontSize="15"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Country" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Picker x:Name="CountryPicker" SelectedItem="{Binding Country}"  HeightRequest="50" TextColor="Black" Margin="10,0"></Picker>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+
+
+                    <Label Text="State" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Picker x:Name="StatePicker" HeightRequest="50" SelectedItem="{Binding State}"  TextColor="Black" Margin="10,0"></Picker>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+
+                    <Label Text="City" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry HeightRequest="50" Text="{Binding City}" Placeholder="City" TextColor="Black" Margin="10,0"></Entry>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+
+                    <Label Text="Street" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry HeightRequest="50" Text="{Binding Street}" Placeholder="Street" TextColor="Black" Margin="10,0"></Entry>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+
+                    
+
+
+                    <Label Text="Pincode" FontSize="Medium" TextColor="DarkGray" Margin="10,5"/>
+                    <Entry HeightRequest="50" Text="{Binding Pincode}" Placeholder="Pin Code" TextColor="Black" Margin="10,0" Keyboard="Telephone"></Entry>
+                    <Label BackgroundColor="DarkGray" HeightRequest="1" HorizontalOptions="FillAndExpand"
+                           Margin="0,5,0,0"/>
+                </StackLayout>
+
+                <!--<StackLayout 
+                    Padding="10" 
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="#F6F6F8">
+                    <Label 
+                        Text="PAYMENT METHODS" 
+                        FontSize="15"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start" />
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="{Binding PaymentOptionsIndex}" Source="Green_dot.png"
+                           Aspect="AspectFit" HeightRequest="25" WidthRequest="25" VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Column="1"  Grid.Row="0" Text="Visa" TextColor="Black"
+                           FontSize="Large" VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PaymentCommand}" CommandParameter="0"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" 
+                           BackgroundColor="DarkGray" HeightRequest="1" 
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Grid.Column="1"  Grid.Row="2" Text="Credit Card" TextColor="Black"
+                           FontSize="Large" VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PaymentCommand}" CommandParameter="2"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" 
+                           BackgroundColor="DarkGray" HeightRequest="1" 
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Grid.Column="1"  Grid.Row="4" Text="Amex" TextColor="Black"
+                           FontSize="Large" VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PaymentCommand}" CommandParameter="4"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

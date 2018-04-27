@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="GlattMart.Pages.ThankYouPage" BackgroundColor="White">
+    <ContentPage.Content>
+        <Image 
+            Source="ThankYou.png"
+            Aspect="AspectFill"
+            HorizontalOptions="EndAndExpand"
+            VerticalOptions="EndAndExpand"/>
+    </ContentPage.Content>
+</ContentPage>

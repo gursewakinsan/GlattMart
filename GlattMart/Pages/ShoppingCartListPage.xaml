@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+    xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" 
+    x:Class="GlattMart.ShoppingCartListPage" Title="Shopping Cart" BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Label 
+                        Text="Next Delivery: With 2 hours" 
+                        HeightRequest="40" 
+                        BackgroundColor="#eeeeee" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Center" />
+                </StackLayout>
+                <syncfusion:SfListView 
+                    BackgroundColor="White" 
+                    Grid.Row="1" 
+                    x:Name="listViewShoppingCart" 
+                    ItemsSource="{Binding ShoppingCartViewModelList}" 
+                    AutoFitMode="Height">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="White" Margin="0,0,0,1" Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="3*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame 
+                                        BackgroundColor="Transparent" 
+                                        HasShadow="false" 
+                                        OutlineColor="Silver" 
+                                        CornerRadius="0" 
+                                        Grid.Column="0" 
+                                        HeightRequest="100" 
+                                        WidthRequest="100">
+                                        <Image 
+                                            Source="{Binding image}" 
+                                            HeightRequest="100" 
+                                            WidthRequest="100" />
+                                    </Frame>
+                                    
+                                    <StackLayout 
+                                        Grid.Column="1" 
+                                        HorizontalOptions="Start">
+                                        <Label 
+                                            Text="{Binding productName}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="Center" 
+                                            TextColor="Black" 
+                                            FontSize="14" />
+                                        
+                                        <Label 
+                                            Text="{Binding price}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="Center" 
+                                            TextColor="#c0c0c0" 
+                                            FontSize="10" />
+                                        
+                                        <numeric:SfNumericUpDown 
+                                            x:Name="numericUpDown" 
+                                            Value="{Binding quantity}" 
+                                            Minimum="1" 
+                                            HeightRequest="30" 
+                                            WidthRequest="100" 
+                                            ParsingMode="Decimal" 
+                                            HorizontalOptions="Start" 
+                                            FormatString="N" 
+                                            SpinButtonAlignment="Both" 
+                                            MaximumDecimalDigits="0"
+                                            Grid.Column="1" 
+                                            ClassId="{Binding productId}"
+                                            ValueChanged="OnQuantityValueChanged"/>
+                                    </StackLayout>
+                                    
+                                    <StackLayout 
+                                        Grid.Column="2" 
+                                        VerticalOptions="FillAndExpand">
+                                        
+                                        <Image 
+                                            Source="cancel" 
+                                            Margin="0,0,5,0" 
+                                            HorizontalOptions="End" 
+                                            VerticalOptions="Start" 
+                                            ClassId="{Binding productId}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="OnDeleteTapped" 
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+                                        <Label 
+                                            Text="{Binding DisplaySubtotal}" 
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalTextAlignment="End" 
+                                            TextColor="#393939" 
+                                            FontSize="14" 
+                                            FontAttributes="Bold"
+                                            HorizontalTextAlignment="Center" 
+                                            VerticalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                    <syncfusion:ListViewItem.FooterTemplate>
+                        <DataTemplate>
+                            <StackLayout BackgroundColor="White">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                        Grid.Column="0" 
+                                        HorizontalOptions="EndAndExpand" 
+                                        Text="SubTotal" />
+                                    <Label 
+                                        Grid.Column="1" 
+                                        Text="{Binding DisplayTotal}" />
+                                </Grid>
+                                <!--<Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                        Grid.Column="0" 
+                                        HorizontalOptions="EndAndExpand" 
+                                        Text="Discount" />
+                                    <Label 
+                                        Grid.Column="1" 
+                                        Text="{Binding  Discount}" />
+                                </Grid>-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                        Grid.Column="0" 
+                                        HorizontalOptions="EndAndExpand" 
+                                        Text="Total" />
+                                    <Label 
+                                        Grid.Column="1" 
+                                        Text="{Binding DisplayTotal}" />
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </syncfusion:ListViewItem.FooterTemplate>
+                </syncfusion:SfListView>
+            </Grid>
+            <StackLayout 
+                VerticalOptions="EndAndExpand" 
+                HeightRequest="50" 
+                BackgroundColor="#084190" 
+                HorizontalOptions="FillAndExpand" 
+                Grid.Row="2">
+                <Label 
+                    Text="SUBMIT ORDER" 
+                    TextColor="White" 
+                    HorizontalTextAlignment="Center" 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" />
+                 <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickedSubmitOrder" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,10 @@
+﻿<Properties StartupConfiguration="{5C3EFA26-275E-4CED-842D-DF7FC1C49BCD}|Default">
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GlattMart.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F605F41-9F69-4E23-A01A-0BA83BFA2476" />
+  <MultiItemStartupConfigurations />
+</Properties>

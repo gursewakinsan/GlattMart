@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:xfControls="clr-namespace:AsNum.XFControls;assembly=AsNum.XFControls"
+             x:Class="GlattMart.Pages.DeliveryAddressPopUp"
+                 Padding="10,0,10,0">
+    <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <xfControls:Border CornerRadius="15" Stroke="White" StrokeThickness="2" Margin="40, 20, 40, 20"
+                           BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Padding="20, 20, 20, 20">
+                <StackLayout BackgroundColor="White" Padding="0, 10, 0, 0">
+                    <ScrollView>
+                        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <StackLayout BackgroundColor="White" Padding="0, 10, 0, 0" 
+                             VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label Text="Street" TextColor="DarkGray" FontSize="Small" HorizontalOptions="FillAndExpand" 
+                                       />
+                                <Entry Text=""/>
+
+                                <Label Text="City" TextColor="DarkGray" FontSize="Small"
+                                       HorizontalOptions="FillAndExpand"/>
+                                <Entry Text=""/>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Label Text="State" TextColor="DarkGray" FontSize="Small"/>
+                                        <Entry Text=""/>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Label Text="Pincode" TextColor="DarkGray" FontSize="Small"/>
+                                        <Entry Text=""/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                            <xfControls:Border CornerRadius="15" BackgroundColor="#354696" >
+                                <Button Text="Save" TextColor="White" BackgroundColor="Transparent"/>
+                            </xfControls:Border>
+                        </StackLayout> 
+                    </ScrollView>
+                </StackLayout>
+            </StackLayout>
+
+            <!--<StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="White" Padding="0, 10, 0, 0" 
+                             VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Label Text="Street" TextColor="DarkGray" FontSize="Small"/>
+                        <Entry Text=""/>
+
+                        <Label Text="City" TextColor="DarkGray" FontSize="Small"/>
+                        <Entry Text=""/>
+                        <StackLayout Orientation="Horizontal">
+
+                            <StackLayout>
+                                <Label Text="State" TextColor="DarkGray" FontSize="Small"/>
+                                <Entry Text=""/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Pincode" TextColor="DarkGray" FontSize="Small"/>
+                                <Entry Text=""/>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+                    <Frame CornerRadius="15" BackgroundColor="#354696" HasShadow="False">
+                        <Label Text="Save" TextColor="White"/>
+                    </Frame>
+            </StackLayout>-->
+
+        </xfControls:Border>
+
+    </AbsoluteLayout>
+</pages:PopupPage>

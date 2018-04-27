@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" 
+    x:Class="GlattMart.Pages.AddToShoppingCartPage" Title="Product Detail" BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Name="MenuItem1" 
+            Order="Primary" 
+            Command="{Binding ShoppingCartNavigationCommand}" 
+            Icon="cartIcon" 
+            Text="Item 1" 
+            Priority="0" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Label 
+                        x:Name="lbl_ProductId" 
+                        Text="{Binding Id}"
+                        HeightRequest="40"
+                        BackgroundColor="#eeeeee" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Center" />
+                    
+                    <Image 
+                        Margin="0,20,0,0"
+                        Source="{Binding BaseImg}" 
+                        HorizontalOptions="FillAndExpand" 
+                        HeightRequest="150" />
+                    
+                    <Label 
+                        Margin="0,20,0,0"
+                        Text="{Binding Name}" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Center" />
+                    
+                    <Label 
+                        x:Name="lbl_Price" 
+                        FontAttributes="Bold"
+                        Text="{Binding DisplayPrice}" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Center" />
+
+                    <StackLayout
+                        Margin="0,20,0,0"
+                        VerticalOptions="StartAndExpand"
+                        BackgroundColor="Silver"
+                        HeightRequest="1" 
+                        HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+                <Grid 
+                    Grid.Row="1" 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Start" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label 
+                        Text="UPS" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+
+                    <Label 
+                        Text="{Binding Sku}" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+
+                    <Label 
+                        Text="SIZE" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="1"
+                        Grid.Column="0"/>
+
+                    <Label 
+                        Text="{Binding DisplaySize}" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        Grid.Row="1"
+                        Grid.Column="1"/>
+
+                    <Label 
+                        Text="CASE PRICE" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="2"
+                        Grid.Column="0"/>
+
+                    <Label 
+                        Text="0.00" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        Grid.Row="2"
+                        Grid.Column="1"/>
+
+                    <Label 
+                        Text="UNIT PRICE" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="3"
+                        Grid.Column="0"/>
+
+                    <Label 
+                        Text="{Binding DisplayUnitValue}" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        Grid.Row="3"
+                        Grid.Column="1"/>
+
+                    <Label 
+                        Text="QTY" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Row="4"
+                        Grid.Column="0"/>
+
+                    <numeric:SfNumericUpDown 
+                        Value="{Binding SelectedQTY}" 
+                        x:Name="numericUpDown" 
+                        Minimum="0" 
+                        HeightRequest="30"
+                        ParsingMode="Decimal"
+                        FormatString="N" 
+                        SpinButtonAlignment="Both"
+                        MaximumDecimalDigits="0"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="0,0,20,0"/>
+                </Grid>
+            </Grid>
+
+            <StackLayout 
+                Grid.Row="2" BackgroundColor="#FCFCFC"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="EndAndExpand" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout 
+                        VerticalOptions="EndAndExpand" 
+                        HeightRequest="50" 
+                        BackgroundColor="#FCFCFC" 
+                        HorizontalOptions="FillAndExpand" 
+                        Grid.Row="0"
+                        Grid.Column="0">
+
+                         <StackLayout 
+                            Orientation="Horizontal" 
+                            Spacing="10" VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand">
+                            
+                            <Image 
+                                Source="heartshape.png" 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand" 
+                                Aspect="AspectFit" 
+                                HeightRequest="25" 
+                                WidthRequest="25"/>
+
+                            <Label 
+                                Text="ADD TO SHOPPING LIST" 
+                                TextColor="Black"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddToShoppingListCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                    <StackLayout 
+                        VerticalOptions="EndAndExpand" 
+                        HeightRequest="50" 
+                        BackgroundColor="#084190" 
+                        HorizontalOptions="FillAndExpand" 
+                        Grid.Row="0"
+                        Grid.Column="1">
+                        
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            Spacing="10" VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand">
+                            <Image 
+                                Source="cartIcon" 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand" 
+                                Aspect="AspectFit"
+                                HeightRequest="25" 
+                                WidthRequest="25"/>
+                            <Label 
+                                Text="ADD TO CART" 
+                                TextColor="White" 
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddToCartCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Grid> 
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

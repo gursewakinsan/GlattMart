@@ -1,0 +1,26 @@
+Function=xamarin_timezone_get_data
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_GetFolderPath
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_log
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/mscorlib.dll
+Function=CreateZStream
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=CloseZStream
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=Flush
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=ReadZStream
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=WriteZStream
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=xamarin_start_wwan
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/System.dll
+Function=xamarin_get_block_descriptor
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/Xamarin.iOS.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/Xamarin.iOS.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/Xamarin.iOS.dll
+Function=UIApplicationMain
+	/Users/apple/Documents/Development/GlattMart/iOS/obj/iPhone/Release/mtouch-cache/Link/Xamarin.iOS.dll
